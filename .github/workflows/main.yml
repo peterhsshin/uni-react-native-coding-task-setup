@@ -52,6 +52,10 @@ jobs:
         curl -o cfs.zip https://rivera.canvasslabs.com:5000/canvass_for_security/client/download/linux
         unzip cfs.zip
         rm cfs.zip
+    - run: | 
+        curl -o CanvassForCompliance.zip https://rivera.canvasslabs.com:5000/client/download/linux
+        unzip CanvassForCompliance.zip
+        rm CanvassForCompliance.zip
     - name: "CFS version checking"    
       env:
         CL_API_TOKEN: ${{ secrets.CL_API_TOKEN }}
@@ -74,7 +78,4 @@ jobs:
     - name: "CFS security scan"
       env:
         CL_API_TOKEN: ${{ secrets.CL_API_TOKEN }}
-      run: ./CanvassForSecurity scan ./analyzer_results/analyzer-result.yml
-
-
-    
+      run: ./LiAnORT scan ./analyzer_results/analyzer-result.yml
